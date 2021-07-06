@@ -101,7 +101,7 @@ This widget only displays a load more button and a progress bar.
 
 #### translations
 
-> `string` | **required**
+> `object`
 
 A mapping of keys to translation values.
 
