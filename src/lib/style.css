@@ -1,0 +1,73 @@
+/* ========================= InfinitHits Widget */
+.ais-InfiniteHits-loadMore:not(.ais-LoadMoreWithProgressBar-loadMore) {
+  display: none;
+}
+
+/* ========================= LoadMoreWithProgressBar Widget */
+.ais-LoadMoreWithProgressBar {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+.ais-LoadMoreWithProgressBar-progressBar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ais-LoadMoreWithProgressBar-progressBar-bar {
+  /* Reset appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border: none;
+  width: 80%;
+  height: 4px;
+  margin-bottom: 1rem;
+
+  /* Firefox */
+  background-color: #d6d6e7;
+  border-radius: 3px;
+
+  /* IE */
+  color: #5a5e9a;
+}
+
+/* Webkit */
+.ais-LoadMoreWithProgressBar-progressBar-bar[value]::-webkit-progress-bar {
+  border-radius: 3px;
+  background-color: #d6d6e7;
+}
+
+.ais-LoadMoreWithProgressBar-progressBar-bar[value]::-webkit-progress-value {
+  border-radius: 3px;
+  background-color: #5a5e9a;
+}
+
+/* Firefox */
+.ais-LoadMoreWithProgressBar-progressBar-bar[value]::-moz-progress-bar {
+  border-radius: 3px;
+  background-color: #5a5e9a;
+}
+
+/* Fallback technique styles */
+.ais-LoadMoreWithProgressBar-progressBar-fallback {
+  background-color: #d6d6e7;
+  border-radius: 3px;
+
+  width: 80%;
+  height: 4px;
+  margin-bottom: 1rem;
+}
+
+.ais-LoadMoreWithProgressBar-progressBar-fallback span {
+  background-color: #5a5e9a;
+  border-radius: 3px;
+
+  display: block;
+  text-indent: -9999px;
+  height: 100%;
+}

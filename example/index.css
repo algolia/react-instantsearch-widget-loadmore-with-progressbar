@@ -1,0 +1,16 @@
+/* ========================= Global */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+/* ========================= LoadMoreWithProgressBar Widget */
+.ais-LoadMoreWithProgressBar {
+  width: 300px;
+  place-self: center;
+}
