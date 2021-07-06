@@ -2,7 +2,7 @@ import { createConnector } from 'react-instantsearch-core';
 import {
   getResults,
   refineValue,
-} from 'react-instantsearch-core/dist/cjs/core/indexUtils';
+} from 'react-instantsearch-core/dist/es/core/indexUtils';
 
 import type {
   SearchState,
@@ -11,7 +11,7 @@ import type {
 import type {
   InstantSearchContext,
   IndexContext,
-} from 'react-instantsearch-core/dist/cjs/core/context';
+} from 'react-instantsearch-core/dist/es/core/context';
 
 export type ProvidedProps = {
   nbSeenHits: number;

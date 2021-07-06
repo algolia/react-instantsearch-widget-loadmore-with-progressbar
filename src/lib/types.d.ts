@@ -1,5 +1,5 @@
 /* eslint-disable import/no-duplicates, import/order */
-declare module 'react-instantsearch-core/dist/cjs/core/indexUtils' {
+declare module 'react-instantsearch-core/dist/es/core/indexUtils' {
   import type { ConnectorSearchResults } from 'react-instantsearch-core';
 
   export function getResults(
@@ -15,7 +15,7 @@ declare module 'react-instantsearch-core/dist/cjs/core/indexUtils' {
   ): any;
 }
 
-declare module 'react-instantsearch-core/dist/cjs/core/context' {
+declare module 'react-instantsearch-core/dist/es/core/context' {
   import type { InstantSearch, Store } from 'react-instantsearch-core';
 
   export type InstantSearchContext = {
