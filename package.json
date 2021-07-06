@@ -1,7 +1,7 @@
 {
   "name": "@algolia/react-instantsearch-widget-loadmore-with-progressbar",
   "version": "1.0.0",
-  "description": "InstantSearch widget that displays a load more button with a progress bar",
+  "description": "React InstantSearch widget that displays a load more button with a progress bar",
   "keywords": [
     "instantsearch-widget",
     "instantsearch",
