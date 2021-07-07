@@ -9,6 +9,11 @@ main {
   row-gap: 1rem;
 }
 
+/* ========================= InfinitHits Widget */
+.ais-InfiniteHits-loadMore:not(.ais-LoadMoreWithProgressBar-loadMore) {
+  display: none;
+}
+
 /* ========================= LoadMoreWithProgressBar Widget */
 .ais-LoadMoreWithProgressBar {
   width: 300px;

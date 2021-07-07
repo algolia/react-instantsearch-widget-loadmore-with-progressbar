@@ -88,7 +88,14 @@ import '@algolia/react-instantsearch-widget-loadmore-with-progressbar/dist/style
 />
 ```
 
-**Note:** The load more button of the [InfinitHits widget](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/) is hidden by default in the above styles, as this widget has its own.
+**Note:** This widget has its own load more button. If you use the [InfinitHits widget](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/), a second load more button will show. You can hide it using this CSS rule:
+
+```css
+/* Hide InfinitHits widget load more button but not LoadMoreWithProgressBar widget load more button */
+.ais-InfiniteHits-loadMore:not(.ais-LoadMoreWithProgressBar-loadMore) {
+  display: none;
+}
+```
 
 ## Requirements
 
