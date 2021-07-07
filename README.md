@@ -7,7 +7,7 @@
 [React InstantSearch widget](https://www.algolia.com/?utm_source=react-instantsearch&utm_campaign=repository) that displays a **load more button with a progress bar**.  
 It works in conjuction with [InfinitHits widget](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/) for diplaying the hits.
 
-![Example](https://i.ibb.co/zxGv83w/example.gif)
+![Example](https://i.ibb.co/qnCwCFq/example.gif)
 
 ---
 
