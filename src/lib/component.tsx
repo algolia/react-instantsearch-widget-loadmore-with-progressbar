@@ -18,31 +18,36 @@ export const LoadMoreWithProgressBar = ({
   refineNext,
   translate,
 }: Props) => {
-  const hasMore = nbSeenHits !== nbTotalHits;
-  const progress =
-    nbTotalHits !== 0 ? Math.floor((nbSeenHits / nbTotalHits) * 100) : 0;
+  const hasMore = nbSeenHits < nbTotalHits;
+  const hasResults = nbTotalHits > 0;
+  const progress = hasResults
+    ? Math.floor((nbSeenHits / nbTotalHits) * 100)
+    : 0;
 
   return (
     <div className="ais-LoadMoreWithProgressBar">
-      <div className="ais-LoadMoreWithProgressBar-progressBar">
-        <progress
-          className="ais-LoadMoreWithProgressBar-progressBar-bar"
-          max="100"
-          value={progress}
-        >
-          <div className="ais-LoadMoreWithProgressBar-progressBar-fallback">
-            <span
-              style={{
-                width: `${progress}%`,
-              }}
-            />
+      {hasResults && (
+        <div className="ais-LoadMoreWithProgressBar-progressBar">
+          <progress
+            className="ais-LoadMoreWithProgressBar-progressBar-bar"
+            max="100"
+            value={progress}
+          >
+            <div className="ais-LoadMoreWithProgressBar-progressBar-fallback">
+              <span
+                style={{
+                  width: `${progress}%`,
+                }}
+              />
+            </div>
+          </progress>
+          <div className="ais-LoadMoreWithProgressBar-progressBar-text">
+            {translate('text', { nbSeenHits, nbTotalHits })}
           </div>
-        </progress>
-        <div className="ais-LoadMoreWithProgressBar-progressBar-text">
-          {translate('text', { nbSeenHits, nbTotalHits })}
         </div>
-      </div>
-      {hasMore && (
+      )}
+
+      {hasMore && hasResults && (
         <button
           type="button"
           className="ais-InfiniteHits-loadMore ais-LoadMoreWithProgressBar-loadMore"
