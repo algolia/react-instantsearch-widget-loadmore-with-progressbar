@@ -21,12 +21,18 @@ export default defineConfig({
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ['react', 'react-dom', 'react-instantsearch-dom'],
+      external: [
+        'react',
+        'react-dom',
+        'react-instantsearch-dom',
+        'react-instantsearch-core',
+      ],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
           'react-instantsearch-dom': 'ReactInstantSearchDOM',
+          'react-instantsearch-core': 'ReactInstantSearchCore',
         },
       },
     },
