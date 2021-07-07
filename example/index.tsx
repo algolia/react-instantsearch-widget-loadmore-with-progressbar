@@ -15,7 +15,8 @@ import { LoadMoreWithProgressBar } from '../src';
 import type { TextTranslationArgs } from '../src';
 import type { Hit } from 'react-instantsearch-core';
 
-import './index.css';
+import '../src/style.scss';
+import './index.scss';
 
 const searchClient = algoliasearch(
   'latency',

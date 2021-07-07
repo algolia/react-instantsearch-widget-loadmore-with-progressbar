@@ -1,5 +1,3 @@
-import './lib/style.css';
-
 export { connectLoadMoreWithProgressBar } from './lib/connector';
 export { LoadMoreWithProgressBarComponent } from './lib/component';
 export { LoadMoreWithProgressBar } from './lib/widget';
