@@ -88,6 +88,8 @@ import '@algolia/react-instantsearch-widget-loadmore-with-progressbar/dist/style
 />
 ```
 
+**Note:** The load more button of the [InfinitHits widget](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/) is hidden by default in the above styles, as this widget has its own.
+
 ## Requirements
 
 You will have to use the [InfinitHits widget](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/) to display the hits.  
