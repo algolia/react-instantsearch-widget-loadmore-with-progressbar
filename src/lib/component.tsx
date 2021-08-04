@@ -57,20 +57,22 @@ export const LoadMoreWithProgressBar = ({
         </div>
       )}
 
-      {hasMore && hasResults && ButtonComponent ? (
-        <ButtonComponent
-          loadMoreTranslation={translate('loadMore')}
-          refineNext={refineNext}
-        />
-      ) : (
-        <button
-          type="button"
-          className="ais-InfiniteHits-loadMore ais-LoadMoreWithProgressBar-loadMore"
-          onClick={refineNext}
-        >
-          {translate('loadMore')}
-        </button>
-      )}
+      {hasMore &&
+        hasResults &&
+        (ButtonComponent ? (
+          <ButtonComponent
+            loadMoreTranslation={translate('loadMore')}
+            refineNext={refineNext}
+          />
+        ) : (
+          <button
+            type="button"
+            className="ais-InfiniteHits-loadMore ais-LoadMoreWithProgressBar-loadMore"
+            onClick={refineNext}
+          >
+            {translate('loadMore')}
+          </button>
+        ))}
     </div>
   );
 };
