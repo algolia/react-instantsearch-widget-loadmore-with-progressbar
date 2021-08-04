@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/compare/v1.0.5...v1.1.0) (2021-08-04)
+
+
+### Features
+
+* add button component props ([aa86978](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/commit/aa869787dfd9fc6800f05ba9c884878941ee78fb))
+* add css variables for colors ([ced61d3](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/commit/ced61d398a338f8e6aff97342cac402207522d4f))
+
+
+### Bug Fixes
+
+* remove type module from package.json ([b2b2d28](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/commit/b2b2d2801f4300d4cb34a4f1c87df999fbb0752f))
+
 ### [1.0.5](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/compare/v1.0.4...v1.0.5) (2021-07-07)
 
 
