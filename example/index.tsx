@@ -1,5 +1,4 @@
 import algoliasearch from 'algoliasearch/lite';
-import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
@@ -38,8 +37,15 @@ const HitComponent = (props: { hit: Hit }) => {
   );
 };
 
-HitComponent.propTypes = {
-  hit: PropTypes.object.isRequired,
+const ButtonComponent = (props: {
+  loadMoreTranslation: string;
+  refineNext: () => void;
+}) => {
+  return (
+    <button type="button" onClick={() => props.refineNext()}>
+      {props.loadMoreTranslation}
+    </button>
+  );
 };
 
 ReactDOM.render(
@@ -57,6 +63,7 @@ ReactDOM.render(
                 nbSeenHits > 1 ? 's' : ''
               } out of ${nbTotalHits}`,
           }}
+          buttonComponent={ButtonComponent}
         />
       </main>
     </InstantSearch>

@@ -107,6 +107,7 @@ This widget only displays a load more button and a progress bar.
 | Option | Type | Required | Default | Description |
 | :-- | :-- | :-- | :-- | --- |
 | [`translations`](#translations) | `object` | false | - | A mapping of keys to translation values. |
+| [`buttonComponent`](#buttonComponent) | `React.ComponentType` | false | - | A custom show more React button component. |
 
 #### translations
 
@@ -129,6 +130,30 @@ A mapping of keys to translation values.
     loadMore: 'Load more',
   }}
 />
+```
+
+#### buttonComponent
+
+> `React.ComponentType`
+
+A custom show more React button component.
+
+- `loadMoreTranslation`: the “Show more” string translation.
+- `refineNext`: a function to refine next hits.
+
+```tsx
+const ButtonComponent = (props: {
+  loadMoreTranslation: string;
+  refineNext: () => void;
+}) => {
+  return (
+    <button type="button" onClick={() => props.refineNext()}>
+      {props.loadMoreTranslation}
+    </button>
+  );
+};
+
+<LoadMoreWithProgressBar buttonComponent={ButtonComponent} />
 ```
 
 ## Example

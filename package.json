@@ -50,7 +50,6 @@
   },
   "dependencies": {
     "algoliasearch": "^4.9.1",
-    "prop-types": "^15.7.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-instantsearch-core": "^6.11.2",

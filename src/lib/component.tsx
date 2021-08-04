@@ -3,8 +3,14 @@ import { translatable } from 'react-instantsearch-core';
 
 import type { ProvidedProps } from './connector';
 
+export type ButtonComponentProps = {
+  loadMoreTranslation: string;
+  refineNext: () => void;
+};
+
 type Props = {
   translate: (key: string, ...params: any) => string;
+  buttonComponent: React.ComponentType<ButtonComponentProps>;
 } & ProvidedProps;
 
 export type TextTranslationArgs = {
@@ -17,6 +23,7 @@ export const LoadMoreWithProgressBar = ({
   nbTotalHits,
   refineNext,
   translate,
+  buttonComponent: ButtonComponent,
 }: Props) => {
   const hasMore = nbSeenHits < nbTotalHits;
   const hasResults = nbTotalHits > 0;
@@ -47,11 +54,16 @@ export const LoadMoreWithProgressBar = ({
         </div>
       )}
 
-      {hasMore && hasResults && (
+      {hasMore && hasResults && ButtonComponent ? (
+        <ButtonComponent
+          loadMoreTranslation={translate('loadMore')}
+          refineNext={refineNext}
+        />
+      ) : (
         <button
           type="button"
           className="ais-InfiniteHits-loadMore ais-LoadMoreWithProgressBar-loadMore"
-          onClick={() => refineNext()}
+          onClick={refineNext}
         >
           {translate('loadMore')}
         </button>
