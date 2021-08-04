@@ -108,6 +108,7 @@ This widget only displays a load more button and a progress bar.
 | :-- | :-- | :-- | :-- | --- |
 | [`translations`](#translations) | `object` | false | - | A mapping of keys to translation values. |
 | [`buttonComponent`](#buttonComponent) | `React.ComponentType` | false | - | A custom show more React button component. |
+| [`className`](#className) | `string` | false | - | Custom CSS classes. |
 
 #### translations
 
@@ -154,6 +155,16 @@ const ButtonComponent = (props: {
 };
 
 <LoadMoreWithProgressBar buttonComponent={ButtonComponent} />
+```
+
+#### className
+
+> `string`
+
+Custom CSS classes.
+
+```tsx
+<LoadMoreWithProgressBar className="my-class" />
 ```
 
 ## Example

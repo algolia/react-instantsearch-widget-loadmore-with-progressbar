@@ -2,15 +2,17 @@ import React from 'react';
 import { translatable } from 'react-instantsearch-core';
 
 import type { ProvidedProps } from './connector';
+import type { ComponentType } from 'react';
 
 export type ButtonComponentProps = {
   loadMoreTranslation: string;
   refineNext: () => void;
 };
 
-type Props = {
+export type LoadMoreWithProgressBarProps = {
   translate: (key: string, ...params: any) => string;
-  buttonComponent: React.ComponentType<ButtonComponentProps>;
+  buttonComponent: ComponentType<ButtonComponentProps>;
+  className: string;
 } & ProvidedProps;
 
 export type TextTranslationArgs = {
@@ -24,7 +26,8 @@ export const LoadMoreWithProgressBar = ({
   refineNext,
   translate,
   buttonComponent: ButtonComponent,
-}: Props) => {
+  className = '',
+}: LoadMoreWithProgressBarProps) => {
   const hasMore = nbSeenHits < nbTotalHits;
   const hasResults = nbTotalHits > 0;
   const progress = hasResults
@@ -32,7 +35,7 @@ export const LoadMoreWithProgressBar = ({
     : 0;
 
   return (
-    <div className="ais-LoadMoreWithProgressBar">
+    <div className={['ais-LoadMoreWithProgressBar', className].join(' ')}>
       {hasResults && (
         <div className="ais-LoadMoreWithProgressBar-progressBar">
           <progress
@@ -72,10 +75,16 @@ export const LoadMoreWithProgressBar = ({
   );
 };
 
-export const LoadMoreWithProgressBarComponent = translatable({
+const translations = {
   loadMore: 'Load more',
   text: ({ nbSeenHits, nbTotalHits }: TextTranslationArgs) =>
     `You've seen ${nbSeenHits} product${
       nbSeenHits > 1 ? 's' : ''
     } out of ${nbTotalHits}`,
-})(LoadMoreWithProgressBar);
+};
+
+export type TranslationsType = typeof translations;
+
+export const LoadMoreWithProgressBarComponent = translatable(translations)(
+  LoadMoreWithProgressBar
+);
