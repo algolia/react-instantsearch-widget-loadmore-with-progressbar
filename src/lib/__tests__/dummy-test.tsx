@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import { InstantSearch, Hits } from 'react-instantsearch-dom';
 
-import { ReactInstantsearchWidgetLoadmoreProgressbar } from '../widget';
+import { LoadMoreWithProgressBar } from '../widget';
 
 const runAllMicroTasks = (): Promise<void> => new Promise(setImmediate);
 
@@ -27,7 +27,7 @@ describe('nothing', () => {
 
     const { debug } = render(
       <InstantSearch indexName="test_index" searchClient={searchClient}>
-        <ReactInstantsearchWidgetLoadmoreProgressbar />
+        <LoadMoreWithProgressBar />
         <Hits hitComponent={({ hit }: { hit: any }) => hit.name} />
       </InstantSearch>
     );
