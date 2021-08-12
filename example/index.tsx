@@ -1,6 +1,7 @@
 import algoliasearch from 'algoliasearch/lite';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import type { Hit } from 'react-instantsearch-core';
 import {
   InstantSearch,
   SearchBox,
@@ -10,9 +11,7 @@ import {
 } from 'react-instantsearch-dom';
 
 import { LoadMoreWithProgressBar } from '../src';
-
-import type { TextTranslationArgs } from '../src';
-import type { Hit } from 'react-instantsearch-core';
+import type { TextTranslationArgs, ButtonComponentProps } from '../src';
 
 import '../src/style.scss';
 import './index.scss';
@@ -37,13 +36,19 @@ const HitComponent = (props: { hit: Hit }) => {
   );
 };
 
-const ButtonComponent = (props: {
-  loadMoreTranslation: string;
-  refineNext: () => void;
-}) => {
+const ButtonComponent = ({
+  translations,
+  isSearchStalled,
+  refineNext,
+}: ButtonComponentProps) => {
   return (
-    <button type="button" onClick={() => props.refineNext()}>
-      {props.loadMoreTranslation}
+    <button
+      type="button"
+      className="ais-InfiniteHits-loadMore ais-LoadMoreWithProgressBar-loadMore"
+      disabled={isSearchStalled}
+      onClick={refineNext}
+    >
+      {isSearchStalled ? translations.searchStalled : translations.loadMore}
     </button>
   );
 };
@@ -58,6 +63,7 @@ ReactDOM.render(
         <LoadMoreWithProgressBar
           translations={{
             loadMore: 'Load more',
+            searchStalled: 'Loading...',
             text: ({ nbSeenHits, nbTotalHits }: TextTranslationArgs) =>
               `You've seen ${nbSeenHits} product${
                 nbSeenHits > 1 ? 's' : ''
