@@ -1,7 +1,14 @@
+import type { ComponentType } from 'react';
+
 import { LoadMoreWithProgressBarComponent } from './component';
+import type { ButtonComponentProps, TranslationsType } from './component';
 import { connectLoadMoreWithProgressBar } from './connector';
 
-import type { ElementType } from 'react';
+export interface LoadMoreWithProgressBarExposedProps {
+  translations?: TranslationsType;
+  buttonComponent?: ComponentType<ButtonComponentProps>;
+  className?: string;
+}
 
-export const LoadMoreWithProgressBar: ElementType =
+export const LoadMoreWithProgressBar: ComponentType<LoadMoreWithProgressBarExposedProps> =
   connectLoadMoreWithProgressBar(LoadMoreWithProgressBarComponent);

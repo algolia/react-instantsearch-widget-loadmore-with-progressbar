@@ -1,32 +1,48 @@
-import React from 'react';
+import classNames from 'classnames';
+import React, { useMemo } from 'react';
 import { translatable } from 'react-instantsearch-core';
+import { createClassNames } from 'react-instantsearch-dom';
 
-import type { ProvidedProps } from './connector';
-import type { ComponentType } from 'react';
+import type { LoadMoreWithProgressBarProvidedProps } from './connector';
+import type { LoadMoreWithProgressBarExposedProps } from './widget';
 
 export type ButtonComponentProps = {
-  loadMoreTranslation: string;
+  translations: Record<keyof typeof translations, string>;
+  isSearchStalled: boolean;
   refineNext: () => void;
 };
 
-export type LoadMoreWithProgressBarProps = {
-  translate: (key: string, ...params: any) => string;
-  buttonComponent: ComponentType<ButtonComponentProps>;
-  className: string;
-} & ProvidedProps;
+export type LoadMoreWithProgressBarProps = LoadMoreWithProgressBarExposedProps &
+  LoadMoreWithProgressBarProvidedProps & {
+    translate: (key: string, ...params: any) => string;
+  };
 
-export type TextTranslationArgs = {
-  nbSeenHits: number;
-  nbTotalHits: number;
-};
+const cx = (...args: string[]) =>
+  classNames(createClassNames('LoadMoreWithProgressBar')(...args));
+
+const ButtonComponent = ({
+  translations,
+  isSearchStalled,
+  refineNext,
+}: ButtonComponentProps) => (
+  <button
+    type="button"
+    className={classNames(cx('loadMore'), 'ais-InfiniteHits-loadMore')}
+    disabled={isSearchStalled}
+    onClick={refineNext}
+  >
+    {isSearchStalled ? translations.searchStalled : translations.loadMore}
+  </button>
+);
 
 export const LoadMoreWithProgressBar = ({
   nbSeenHits,
   nbTotalHits,
+  isSearchStalled,
   refineNext,
   translate,
-  buttonComponent: ButtonComponent,
-  className = '',
+  buttonComponent: CustomButtonComponent,
+  className,
 }: LoadMoreWithProgressBarProps) => {
   const hasMore = nbSeenHits < nbTotalHits;
   const hasResults = nbTotalHits > 0;
@@ -34,16 +50,27 @@ export const LoadMoreWithProgressBar = ({
     ? Math.floor((nbSeenHits / nbTotalHits) * 100)
     : 0;
 
+  const translations = useMemo(
+    () => ({
+      loadMore: translate('loadMore'),
+      searchStalled: translate('searchStalled'),
+      text: translate('text', { nbSeenHits, nbTotalHits }),
+    }),
+    [translate, nbSeenHits, nbTotalHits]
+  );
+
+  const Button = CustomButtonComponent ?? ButtonComponent;
+
   return (
-    <div className={['ais-LoadMoreWithProgressBar', className].join(' ')}>
+    <div className={classNames(cx(''), className)}>
       {hasResults && (
-        <div className="ais-LoadMoreWithProgressBar-progressBar">
+        <div className={cx('progressBar')}>
           <progress
-            className="ais-LoadMoreWithProgressBar-progressBar-bar"
+            className={cx('progressBar-bar')}
             max="100"
             value={progress}
           >
-            <div className="ais-LoadMoreWithProgressBar-progressBar-fallback">
+            <div className={cx('progressBar-fallback')}>
               <span
                 style={{
                   width: `${progress}%`,
@@ -51,41 +78,35 @@ export const LoadMoreWithProgressBar = ({
               />
             </div>
           </progress>
-          <div className="ais-LoadMoreWithProgressBar-progressBar-text">
-            {translate('text', { nbSeenHits, nbTotalHits })}
-          </div>
+          <div className={cx('progressBar-text')}>{translations.text}</div>
         </div>
       )}
 
-      {hasMore &&
-        hasResults &&
-        (ButtonComponent ? (
-          <ButtonComponent
-            loadMoreTranslation={translate('loadMore')}
-            refineNext={refineNext}
-          />
-        ) : (
-          <button
-            type="button"
-            className="ais-InfiniteHits-loadMore ais-LoadMoreWithProgressBar-loadMore"
-            onClick={refineNext}
-          >
-            {translate('loadMore')}
-          </button>
-        ))}
+      {hasMore && hasResults && (
+        <Button
+          translations={translations}
+          isSearchStalled={isSearchStalled}
+          refineNext={refineNext}
+        />
+      )}
     </div>
   );
 };
 
 const translations = {
   loadMore: 'Load more',
+  searchStalled: 'Loading...',
   text: ({ nbSeenHits, nbTotalHits }: TextTranslationArgs) =>
     `You've seen ${nbSeenHits} product${
       nbSeenHits > 1 ? 's' : ''
     } out of ${nbTotalHits}`,
 };
 
-export type TranslationsType = typeof translations;
+export type TextTranslationArgs = {
+  nbSeenHits: number;
+  nbTotalHits: number;
+};
+export type TranslationsType = Partial<typeof translations>;
 
 export const LoadMoreWithProgressBarComponent = translatable(translations)(
   LoadMoreWithProgressBar

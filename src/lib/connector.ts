@@ -1,38 +1,43 @@
 import { createConnector } from 'react-instantsearch-core';
-import {
-  getResults,
-  refineValue,
-} from 'react-instantsearch-core/dist/es/core/indexUtils';
-
 import type {
   SearchState,
   ConnectorSearchResults,
 } from 'react-instantsearch-core';
 import type {
-  InstantSearchContext,
   IndexContext,
+  InstantSearchContext,
 } from 'react-instantsearch-core/dist/es/core/context';
+import {
+  getResults,
+  refineValue,
+} from 'react-instantsearch-core/dist/es/core/indexUtils';
 
-export type ProvidedProps = {
+import type { LoadMoreWithProgressBarExposedProps } from './widget';
+
+export type LoadMoreWithProgressBarProvidedProps = {
   nbSeenHits: number;
   nbTotalHits: number;
   refineNext: () => void;
+  isSearchStalled: boolean;
 };
 
-type ConnectorProps = {
-  contextValue: InstantSearchContext;
+interface ConnectorProps {
+  contextValue?: InstantSearchContext;
   indexContextValue?: IndexContext;
-};
+}
 
 function getId() {
   return 'page';
 }
 
-export const connectLoadMoreWithProgressBar = createConnector({
+export const connectLoadMoreWithProgressBar = createConnector<
+  LoadMoreWithProgressBarProvidedProps,
+  LoadMoreWithProgressBarExposedProps
+>({
   displayName: 'AlgoliaLoadMoreWithProgressBar',
 
   getProvidedProps(
-    props: ConnectorProps,
+    props: LoadMoreWithProgressBarExposedProps & ConnectorProps,
     searchState: SearchState,
     searchResults: ConnectorSearchResults
   ) {
@@ -46,6 +51,7 @@ export const connectLoadMoreWithProgressBar = createConnector({
         nbSeenHits: 0,
         nbTotalHits: 0,
         refineNext: () => {},
+        isSearchStalled: searchResults.isSearchStalled,
       };
     }
 
@@ -60,10 +66,15 @@ export const connectLoadMoreWithProgressBar = createConnector({
       nbSeenHits,
       nbTotalHits,
       refineNext: () => this.refine(page + 1),
+      isSearchStalled: searchResults.isSearchStalled,
     };
   },
 
-  refine(props, searchState, index) {
+  refine(
+    props: LoadMoreWithProgressBarExposedProps & ConnectorProps,
+    searchState: SearchState,
+    index
+  ) {
     const id = getId();
     const nextValue = { [id]: index + 1 };
     const resetPage = false;

@@ -6,6 +6,7 @@ declare module 'react-instantsearch-core/dist/es/core/indexUtils' {
     searchResults: ConnectorSearchResults,
     context: any
   ): any;
+
   export function refineValue(
     searchState,
     nextRefinement,
