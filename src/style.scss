@@ -1,13 +1,13 @@
 /* ========================= LoadMoreWithProgressBar Widget */
-:root {
-  --ais-loadmore-with-progressbar-background-color: #d6d6e7;
-  --ais-loadmore-with-progressbar-value-color: #5a5e9a;
-}
-
 .ais-LoadMoreWithProgressBar {
   display: flex;
   flex-direction: column;
   place-items: center;
+  text-align: center;
+
+  // CSS variables
+  --bar-color: #d6d6e7;
+  --value-color: #5a5e9a;
 }
 
 .ais-LoadMoreWithProgressBar-progressBar {
@@ -29,33 +29,33 @@
   margin-bottom: 1rem;
 
   /* Firefox */
-  background-color: var(--ais-loadmore-with-progressbar-background-color);
+  background-color: var(--bar-color);
   border-radius: 3px;
 
   /* IE */
-  color: var(--ais-loadmore-with-progressbar-value-color);
+  color: var(--value-color);
 }
 
 /* Webkit */
 .ais-LoadMoreWithProgressBar-progressBar-bar[value]::-webkit-progress-bar {
   border-radius: 3px;
-  background-color: var(--ais-loadmore-with-progressbar-background-color);
+  background-color: var(--bar-color);
 }
 
 .ais-LoadMoreWithProgressBar-progressBar-bar[value]::-webkit-progress-value {
   border-radius: 3px;
-  background-color: var(--ais-loadmore-with-progressbar-value-color);
+  background-color: var(--value-color);
 }
 
 /* Firefox */
 .ais-LoadMoreWithProgressBar-progressBar-bar[value]::-moz-progress-bar {
   border-radius: 3px;
-  background-color: var(--ais-loadmore-with-progressbar-value-color);
+  background-color: var(--value-color);
 }
 
 /* Fallback technique styles */
 .ais-LoadMoreWithProgressBar-progressBar-fallback {
-  background-color: var(--ais-loadmore-with-progressbar-background-color);
+  background-color: var(--bar-color);
   border-radius: 3px;
 
   width: 80%;
@@ -64,7 +64,7 @@
 }
 
 .ais-LoadMoreWithProgressBar-progressBar-fallback span {
-  background-color: var(--ais-loadmore-with-progressbar-value-color);
+  background-color: var(--value-color);
   border-radius: 3px;
 
   display: block;
