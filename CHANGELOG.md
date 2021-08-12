@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/compare/v1.2.1...v1.3.0) (2021-08-12)
+
+
+### Features
+
+* add isSearchStalled ([b76a81d](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/commit/b76a81d7f3f47fa6b02a916e03a1bd5041b864b6))
+* move css variables ([e1bcd50](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/commit/e1bcd502748b82e5913d94135be01f85ee2d9350))
+* update example ([a7966cb](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/commit/a7966cbeb3d9dda3a5a4354a122b9c019f8277f1))
+
 ### [1.2.1](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/compare/v1.2.0...v1.2.1) (2021-08-04)
 
 
