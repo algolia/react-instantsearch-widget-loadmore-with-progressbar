@@ -158,6 +158,8 @@ A custom show more React button component.
 - `refineNext`: a function to refine next hits.
 
 ```tsx
+import type { ButtonComponentProps } from '@algolia/react-instantsearch-widget-loadmore-with-progressbar'
+
 const ButtonComponent = ({
   translations,
   isSearchStalled,
