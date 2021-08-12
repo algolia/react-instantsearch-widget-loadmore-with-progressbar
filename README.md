@@ -19,6 +19,7 @@ It works in conjuction with [InfinitHits widget](https://www.algolia.com/doc/api
 - [Installation](#installation)
 - [Usage](#usage)
 - [Styling](#styling)
+  - [CSS variables](#css-variables)
 - [Requirements](#requirements)
 - [Options](#options)
 - [Example](#example)
@@ -61,11 +62,12 @@ ReactDOM.render(
     <InfiniteHits />
     <LoadMoreWithProgressBar
       translations={{
+        loadMore: 'Load more',
+        searchStalled: 'Loading...',
         text: ({ nbSeenHits, nbTotalHits }: TextTranslationArgs) =>
           `You've seen ${nbSeenHits} product${
             nbSeenHits > 1 ? 's' : ''
           } out of ${nbTotalHits}`,
-        loadMore: 'Load more',
       }}
     />
   </InstantSearch>,
@@ -97,6 +99,16 @@ import '@algolia/react-instantsearch-widget-loadmore-with-progressbar/dist/style
 }
 ```
 
+### CSS variables
+
+The widget styles uses CSS variables that you can customize in your own CSS.  
+You can override CSS variables using the `.ais-LoadMoreWithProgressBar` class.
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `--bar-color` | [`color`][css-color] | Progress bar background color. |
+| `--value-color` | [`color`][css-color] | Progress value background color. |
+
 ## Requirements
 
 You will have to use the [InfinitHits widget](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/) to display the hits.  
@@ -116,19 +128,21 @@ This widget only displays a load more button and a progress bar.
 
 A mapping of keys to translation values.
 
+- `loadMore`: the label of the “Show more” button.
+- `searchStalled`: the label of the “Show more” button when the search is stalled.
 - `text`: the text describing the current search progress. Accepts two number parameters:
   - `nbSeenHits` represents the number of hits already seen.
   - `nbTotalHits` represents the number of total hits in the current search state.
-- `loadMore`: the label of the “Show more” button.
 
 ```tsx
 <LoadMoreWithProgressBar
   translations={{
+    loadMore: 'Load more',
+    searchStalled: 'Loading...',
     text: ({ nbSeenHits, nbTotalHits }: TextTranslationArgs) =>
       `You've seen ${nbSeenHits} product${
         nbSeenHits > 1 ? 's' : ''
       } out of ${nbTotalHits}`,
-    loadMore: 'Load more',
   }}
 />
 ```
@@ -139,17 +153,19 @@ A mapping of keys to translation values.
 
 A custom show more React button component.
 
-- `loadMoreTranslation`: the “Show more” string translation.
+- `translations`: the translations strings.
+- `isSearchStalled`: `true` if the search is stalled, `false` otherwise.
 - `refineNext`: a function to refine next hits.
 
 ```tsx
-const ButtonComponent = (props: {
-  loadMoreTranslation: string;
-  refineNext: () => void;
-}) => {
+const ButtonComponent = ({
+  translations,
+  isSearchStalled,
+  refineNext,
+}: ButtonComponentProps) => {
   return (
-    <button type="button" onClick={() => props.refineNext()}>
-      {props.loadMoreTranslation}
+    <button type="button" onClick={refineNext}>
+      {isSearchStalled ? translations.searchStalled : translations.loadMore}
     </button>
   );
 };
@@ -239,3 +255,4 @@ This project was generated with [create-instantsearch-app](https://github.com/al
 [instantsearch-vue-github]: https://github.com/algolia/vue-instantsearch
 [instantsearch-android-github]: https://github.com/algolia/instantsearch-android
 [instantsearch-ios-github]: https://github.com/algolia/instantsearch-ios
+[css-color]: https://developer.mozilla.org/en-US/docs/Web/CSS/color
