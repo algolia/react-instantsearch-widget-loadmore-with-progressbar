@@ -1,13 +1,11 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { InstantSearch, Hits } from 'react-instantsearch-dom';
+import { Hits, InstantSearch } from 'react-instantsearch-dom';
 
 import { LoadMoreWithProgressBar } from '../widget';
 
-const runAllMicroTasks = (): Promise<void> => new Promise(setImmediate);
-
 describe('nothing', () => {
-  it('tests nothing', async () => {
+  it('tests nothing', () => {
     const searchClient = {
       search(_requests: any[]) {
         return Promise.resolve({
@@ -32,7 +30,6 @@ describe('nothing', () => {
       </InstantSearch>
     );
 
-    await runAllMicroTasks();
     debug();
   });
 });
