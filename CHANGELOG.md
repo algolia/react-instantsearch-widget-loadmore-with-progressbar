@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.3](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/compare/v1.3.2...v1.3.3) (2021-09-30)
+
+
+### Bug Fixes
+
+* rename cjs file ([5abc8e1](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/commit/5abc8e1f8345c6ee141cbbc40eb6356bbad09952))
+
 ### [1.3.2](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/compare/v1.3.1...v1.3.2) (2021-08-25)
 
 
