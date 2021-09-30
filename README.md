@@ -65,7 +65,7 @@ ReactDOM.render(
         loadMore: 'Load more',
         searchStalled: 'Loading...',
         text: ({ nbSeenHits, nbTotalHits }: TextTranslationArgs) =>
-          `You've seen ${nbSeenHits} product${
+          `You've seen ${nbSeenHits} hit${
             nbSeenHits > 1 ? 's' : ''
           } out of ${nbTotalHits}`,
       }}
@@ -140,7 +140,7 @@ A mapping of keys to translation values.
     loadMore: 'Load more',
     searchStalled: 'Loading...',
     text: ({ nbSeenHits, nbTotalHits }: TextTranslationArgs) =>
-      `You've seen ${nbSeenHits} product${
+      `You've seen ${nbSeenHits} hit${
         nbSeenHits > 1 ? 's' : ''
       } out of ${nbTotalHits}`,
   }}
