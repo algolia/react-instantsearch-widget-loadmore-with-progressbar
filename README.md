@@ -5,7 +5,7 @@
 </p>
 
 [React InstantSearch widget](https://www.algolia.com/?utm_source=react-instantsearch&utm_campaign=repository) that displays a **load more button with a progress bar**.  
-It works in conjuction with [InfinitHits widget](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/) for diplaying the hits.
+It works in conjuction with [InfiniteHits widget](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/) for diplaying the hits.
 
 ![Example](https://i.ibb.co/qnCwCFq/example.gif)
 
@@ -90,10 +90,10 @@ import '@algolia/react-instantsearch-widget-loadmore-with-progressbar/dist/style
 />
 ```
 
-**Note:** This widget has its own load more button. If you use the [InfinitHits widget](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/), a second load more button will show. You can hide it using this CSS rule:
+**Note:** This widget has its own load more button. If you use the [InfiniteHits widget](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/), a second load more button will show. You can hide it using this CSS rule:
 
 ```css
-/* Hide InfinitHits widget load more button but not LoadMoreWithProgressBar widget load more button */
+/* Hide InfiniteHits widget load more button but not LoadMoreWithProgressBar widget load more button */
 .ais-InfiniteHits-loadMore:not(.ais-LoadMoreWithProgressBar-loadMore) {
   display: none;
 }
@@ -111,7 +111,7 @@ You can override CSS variables using the `.ais-LoadMoreWithProgressBar` class.
 
 ## Requirements
 
-You will have to use the [InfinitHits widget](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/) to display the hits.  
+You will have to use the [InfiniteHits widget](https://www.algolia.com/doc/api-reference/widgets/infinite-hits/react/) to display the hits.  
 This widget only displays a load more button and a progress bar.
 
 ### Options
