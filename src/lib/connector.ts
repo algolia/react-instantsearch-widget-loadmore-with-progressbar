@@ -37,7 +37,7 @@ export const connectLoadMoreWithProgressBar = createConnector<
   displayName: 'AlgoliaLoadMoreWithProgressBar',
 
   getProvidedProps(
-    props: LoadMoreWithProgressBarExposedProps & ConnectorProps,
+    props: ConnectorProps & LoadMoreWithProgressBarExposedProps,
     searchState: SearchState,
     searchResults: ConnectorSearchResults
   ) {
@@ -71,7 +71,7 @@ export const connectLoadMoreWithProgressBar = createConnector<
   },
 
   refine(
-    props: LoadMoreWithProgressBarExposedProps & ConnectorProps,
+    props: ConnectorProps & LoadMoreWithProgressBarExposedProps,
     searchState: SearchState,
     index
   ) {

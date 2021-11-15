@@ -1,4 +1,4 @@
-/* eslint-disable import/no-duplicates, import/order */
+/* eslint-disable import/no-duplicates */
 declare module 'react-instantsearch-core/dist/es/core/indexUtils' {
   import type { ConnectorSearchResults } from 'react-instantsearch-core';
 
