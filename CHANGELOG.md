@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.8](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/compare/v1.3.7...v1.3.8) (2021-11-15)
+
+
+### Bug Fixes
+
+* linting ([77bdce4](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/commit/77bdce405be02c4395d5e018254a0357a58e12ab))
+
 ### [1.3.7](https://github.com/algolia/react-instantsearch-widget-loadmore-with-progressbar/compare/v1.3.6...v1.3.7) (2021-11-14)
 
 
