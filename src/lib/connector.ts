@@ -35,6 +35,7 @@ export const connectLoadMoreWithProgressBar = createConnector<
   LoadMoreWithProgressBarExposedProps
 >({
   displayName: 'AlgoliaLoadMoreWithProgressBar',
+  $$type: 'ais.loadMoreWithProgressBar',
 
   getProvidedProps(
     props: ConnectorProps & LoadMoreWithProgressBarExposedProps,

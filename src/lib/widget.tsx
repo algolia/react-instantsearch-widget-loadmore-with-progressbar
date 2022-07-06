@@ -11,4 +11,6 @@ export interface LoadMoreWithProgressBarExposedProps {
 }
 
 export const LoadMoreWithProgressBar: ComponentType<LoadMoreWithProgressBarExposedProps> =
-  connectLoadMoreWithProgressBar(LoadMoreWithProgressBarComponent);
+  connectLoadMoreWithProgressBar(LoadMoreWithProgressBarComponent, {
+    $$widgetType: 'ais.loadMoreWithProgressBar',
+  });
