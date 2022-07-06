@@ -1,4 +1,3 @@
-/* eslint-disable import/no-duplicates */
 declare module 'react-instantsearch-core/dist/es/core/indexUtils' {
   import type { ConnectorSearchResults } from 'react-instantsearch-core';
 
@@ -17,8 +16,6 @@ declare module 'react-instantsearch-core/dist/es/core/indexUtils' {
 }
 
 declare module 'react-instantsearch-core/dist/es/core/context' {
-  import type { InstantSearch, Store } from 'react-instantsearch-core';
-
   export type InstantSearchContext = {
     onInternalStateUpdate: InstantSearch['onWidgetsInternalStateUpdate'];
     createHrefForState: InstantSearch['createHrefForState'];
@@ -36,4 +33,3 @@ declare module 'react-instantsearch-core/dist/es/core/context' {
       }
     | undefined;
 }
-/* eslint-enable */
