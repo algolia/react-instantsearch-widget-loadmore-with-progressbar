@@ -1,6 +1,6 @@
 import algoliasearch from 'algoliasearch/lite';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import type { Hit } from 'react-instantsearch-core';
 import {
   InstantSearch,
@@ -53,26 +53,25 @@ const ButtonComponent = ({
   );
 };
 
-ReactDOM.render(
-  <React.StrictMode>
-    <InstantSearch indexName="instant_search" searchClient={searchClient}>
-      <Configure hitsPerPage={2} />
-      <main>
-        <SearchBox />
-        <InfiniteHits hitComponent={HitComponent} />
-        <LoadMoreWithProgressBar
-          translations={{
-            loadMore: 'Load more',
-            searchStalled: 'Loading...',
-            text: ({ nbSeenHits, nbTotalHits }: TextTranslationArgs) =>
-              `You've seen ${nbSeenHits} item${
-                nbSeenHits > 1 ? 's' : ''
-              } out of ${nbTotalHits}`,
-          }}
-          buttonComponent={ButtonComponent}
-        />
-      </main>
-    </InstantSearch>
-  </React.StrictMode>,
-  document.getElementById('root')
+const App = () => (
+  <InstantSearch indexName="instant_search" searchClient={searchClient}>
+    <Configure hitsPerPage={2} />
+    <main>
+      <SearchBox />
+      <InfiniteHits hitComponent={HitComponent} />
+      <LoadMoreWithProgressBar
+        translations={{
+          loadMore: 'Load more',
+          searchStalled: 'Loading...',
+          text: ({ nbSeenHits, nbTotalHits }: TextTranslationArgs) =>
+            `You've seen ${nbSeenHits} item${
+              nbSeenHits > 1 ? 's' : ''
+            } out of ${nbTotalHits}`,
+        }}
+        buttonComponent={ButtonComponent}
+      />
+    </main>
+  </InstantSearch>
 );
+
+createRoot(document.getElementById('root')!).render(<App />);
